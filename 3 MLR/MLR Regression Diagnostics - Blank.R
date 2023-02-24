@@ -1,31 +1,47 @@
-### Regression Diagnostics
-## Load the sas7bdat package to read in a SAS dataset
-library(sas7bdat)
+#Regression Diagnostics
+library(car)
+library(MASS)
+library(readxl)
 
 ## Set working directory
-
+setwd("~/Library/CloudStorage/OneDrive-EmoryUniversity/Documents/Work/BIOS 591P 2023/3 MLR/Data")
 ## Read in the data
-bwt <- read.sas7bdat("birthweight.sas7bdat")
+bwt <- read_xlsx("Spring 2023 birthweight.xlsx")
 
-## Fit MLR model
-bwt.lm <- lm(BWT ~ AGE + WT + SMOKE + HT,data=bwt)
+# Fit multiple linear regression model
 
-## Load packages for regression diagnostics
+# Check normality of residuals
 
-## Partial plots: crPlots()
+# Partial plots
 
-## Leverage: hatvalues()
+# Residuals versus predicted values
 
-# Threshold: 2*(k+1)/n
+# QQ plot of residuals
 
-## Cook's distance: cooks.distance()
+# Handling assumption violations
+# Commonly used transformations is the log transformation
+# Fake data. Air pollution vs. city population in thousands:
+x <- runif(50,10,30) # X drawn between 10 and 30
+e <- rnorm(50,0,1)
+b <- 0.1
+y <- exp(b*x + e)
 
-# Threshold: 4/n
+airdata <- data.frame(x,y)
 
-## Jackknife Residuals: studres()
+# Explore data
 
-# Threshold: absolute value > 2
+# Fit linear model on untransformed data
 
-## Correlation
+# Check residuals
 
-## VIFs
+# Transform data
+
+# Fit transformed model
+
+# Check residuals again
+
+# Interpretation of slope?
+
+## Next week we will cover outlier detection in regression diagnostics
+
+
